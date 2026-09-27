@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hanna Modas — moda infantil, brinquedos, acessórios, bolsas e saídas de maternidade em Itapema - SC.">
+<title>Hanna Modas | Moda Infantil</title>
+<style>
+:root{
+  --pink:#d84d7f;--pink-dark:#b93666;--pink-light:#fff0f5;
+  --blue:#1e4e8c;--text:#2b2529;--muted:#70666b;--line:#eadde3;
+  --white:#fff;--cream:#fffafb;--shadow:0 18px 45px rgba(58,30,43,.10)
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.container{width:min(1120px,92%);margin:auto}
+
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;color:var(--pink);letter-spacing:-1px}.logo span{color:var(--text)}
+.menu{display:flex;gap:25px;list-style:none}.menu a{font-size:14px;font-weight:700;transition:.2s}.menu a:hover{color:var(--pink)}
+.menu-button{display:none;border:0;background:none;font-size:27px;cursor:pointer;color:var(--text)}
+
+.hero{padding:112px 0 55px;background:linear-gradient(135deg,#fff7fa,#fff)}
+.hero-banner{position:relative;overflow:hidden;border-radius:28px;box-shadow:var(--shadow);height:min(470px,55vw);min-height:290px}
+.hero-banner img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(35,15,25,.68),rgba(35,15,25,.10) 70%,transparent)}
+.hero-copy{position:absolute;left:6%;top:50%;transform:translateY(-50%);max-width:510px;color:#fff}
+.tag{display:inline-block;padding:7px 13px;margin-bottom:15px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--pink-dark);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2.5px;margin-bottom:18px}
+.hero p{font-size:18px;max-width:520px;margin-bottom:25px}
+.buttons{display:flex;flex-wrap:wrap;gap:11px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;font-weight:800;border:1px solid transparent;transition:.25s}
+.btn-primary{background:var(--pink);color:#fff;box-shadow:0 9px 22px rgba(216,77,127,.25)}.btn-primary:hover{background:var(--pink-dark);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--text)}.btn-light:hover{transform:translateY(-2px)}
+.banner-title{text-align:center;margin-top:24px}.banner-title h2{font-size:clamp(28px,5vw,42px);letter-spacing:-1px}.banner-title p{color:var(--muted);margin-top:5px}
+
+section{padding:85px 0}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header span{color:var(--pink);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
+.section-header h2{margin-top:7px;font-size:clamp(30px,5vw,44px);letter-spacing:-1.5px}
+.section-header p{max-width:650px;margin:9px auto 0;color:var(--muted)}
+
+.categories{background:#fff}
+.category-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.category{padding:23px 16px;text-align:center;background:var(--pink-light);border:1px solid #f1dbe4;border-radius:19px;transition:.25s}
+.category:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.category h3{font-size:15px;margin-bottom:4px}.category p{font-size:12px;color:var(--muted)}
+
+.featured{background:var(--cream)}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.feature-card{position:relative;overflow:hidden;border-radius:26px;min-height:440px;box-shadow:var(--shadow);background:#eee}
+.feature-card img{width:100%;height:100%;min-height:440px;object-fit:cover;transition:transform .6s}
+.feature-card:hover img{transform:scale(1.035)}
+.feature-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(20,15,18,.72))}
+.feature-info{position:absolute;left:28px;right:28px;bottom:26px;color:#fff}
+.feature-info .label{font-size:12px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.feature-info h3{font-size:30px;line-height:1.1;margin:6px 0 7px}
+.feature-info p{font-size:14px;max-width:430px;margin-bottom:14px}
+.feature-info a{display:inline-flex;padding:10px 15px;border-radius:10px;background:#fff;color:var(--text);font-size:13px;font-weight:800}
+
+.catalog{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden;transition:.25s}
+.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.product-image{height:220px;background:var(--pink-light);display:flex;align-items:center;justify-content:center}
+.product-image span{font-size:13px;color:var(--muted);font-weight:700}
+.product-info{padding:16px}.product-info h3{font-size:16px;margin-bottom:4px}.product-info p{font-size:13px;color:var(--muted)}
+.catalog-note{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-image{overflow:hidden;border-radius:26px;box-shadow:var(--shadow)}
+.about-image img{width:100%;height:430px;object-fit:cover}
+.about-text h2{font-size:42px;line-height:1.1;margin:12px 0 17px}
+.about-text p{color:var(--muted);margin-bottom:13px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:23px}
+.feature{padding:13px;background:#fff;border:1px solid var(--line);border-radius:13px;font-size:13px;font-weight:800}
+
+.reviews{background:#fff4f7}
+.rating{text-align:center;margin-bottom:30px}.rating-number{font-size:52px;font-weight:900}.stars{color:#e8a321;font-size:23px;letter-spacing:2px}.rating p{color:var(--muted)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.review{background:#fff;padding:23px;border-radius:19px;border:1px solid var(--line)}
+.review-stars{color:#e8a321;margin-bottom:9px}.review p{color:#61575c;font-size:14px;margin-bottom:16px}.review strong{font-size:13px}
+
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-card{padding:27px;border-radius:22px;background:#fff9fb;border:1px solid var(--line)}
+.contact-card h3{margin-bottom:17px}
+.contact-item{margin-bottom:17px;color:#5f555a;font-size:14px}
+.contact-item strong{display:block;color:var(--text);margin-bottom:2px}
+.contact-button{width:100%;margin-top:7px}
+
+footer{background:#292329;color:#fff;padding:42px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+.footer-logo{font-size:25px;font-weight:900;color:#ff9abd;margin-bottom:9px}
+footer p{color:#cfc4ca;font-size:13px}footer h3{margin-bottom:11px}
+.footer-links{display:flex;flex-direction:column;gap:7px;color:#d6cbd0;font-size:13px}
+.copyright{margin-top:30px;padding-top:18px;border-top:1px solid #463d42;text-align:center;color:#a99ea3;font-size:12px}
+
+.whatsapp{position:fixed;right:20px;bottom:20px;width:58px;height:58px;display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;border-radius:50%;font-size:13px;font-weight:900;box-shadow:0 8px 25px rgba(0,0,0,.2);z-index:999;transition:.25s}.whatsapp:hover{transform:scale(1.08)}
+
+.fade{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.fade.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .menu{position:absolute;top:72px;left:0;width:100%;display:none;flex-direction:column;padding:19px;background:#fff;border-bottom:1px solid var(--line)}
+  .menu.active{display:flex}.menu-button{display:block}
+  .hero-copy{max-width:58%}.category-grid{grid-template-columns:repeat(2,1fr)}
+  .feature-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,1fr)}.review-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav{height:64px}.menu{top:64px}
+  .hero{padding-top:86px}.hero-banner{height:480px;min-height:480px;border-radius:20px}
+  .hero-banner img{object-position:center}
+  .hero-overlay{background:linear-gradient(180deg,rgba(20,10,15,.08),rgba(20,10,15,.78))}
+  .hero-copy{left:20px;right:20px;max-width:none;top:auto;bottom:24px;transform:none}
+  .hero h1{font-size:39px}.hero p{font-size:15px}
+  .buttons{flex-direction:column}.btn{width:100%}
+  section{padding:62px 0}.category-grid{grid-template-columns:1fr 1fr;gap:9px}
+  .category{padding:18px 10px}.feature-card,.feature-card img{min-height:370px}.feature-card{min-height:370px}
+  .feature-info{left:20px;right:20px;bottom:20px}.feature-info h3{font-size:25px}
+  .product-grid{grid-template-columns:1fr 1fr;gap:9px}.product-image{height:155px}
+  .about-image img{height:330px}.about-text h2{font-size:34px}
+  .features{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">Hanna<span> Modas</span></a>
+    <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#categorias">Categorias</a></li>
+      <li><a href="#feminino">Feminino</a></li>
+      <li><a href="#masculino">Masculino</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-banner fade">
+      <img src="imagens/fachada.jpg" alt="Fachada da Hanna Kids - Moda Infantil">
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <span class="tag">Hanna Modas • Itapema - SC</span>
+        <h1>Moda infantil para cada momento.</h1>
+        <p>Roupas e acessórios para crianças de 0 a 16 anos, além de brinquedos, bolsas, saídas de maternidade e muito mais.</p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://wa.me/5547997186720?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Hanna%20Modas." target="_blank">Falar no WhatsApp</a>
+          <a class="btn btn-light" href="#feminino">Ver coleção</a>
+        </div>
+      </div>
+    </div>
+    <div class="banner-title">
+      <h2>Hanna Modas</h2>
+      <p>Uma vitrine digital da nossa loja infantil.</p>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categorias">
+  <div class="container">
+    <div class="section-header fade">
+      <span>Encontre o que procura</span>
+      <h2>Nossas categorias</h2>
+      <p>Variedade para vestir, presentear e acompanhar cada fase da infância.</p>
+    </div>
+    <div class="category-grid">
+      <div class="category fade"><h3>Roupas 0–16 anos</h3><p>Peças para várias idades</p></div>
+      <div class="category fade"><h3>Brinquedos</h3><p>Opções para presentear</p></div>
+      <div class="category fade"><h3>Bolsas</h3><p>Práticas e estilosas</p></div>
+      <div class="category fade"><h3>Saídas de maternidade</h3><p>Para momentos especiais</p></div>
+      <div class="category fade"><h3>Acessórios</h3><p>Detalhes que completam o look</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="featured" id="feminino">
+  <div class="container">
+    <div class="section-header fade">
+      <span>Coleções</span>
+      <h2>Moda Infantil Feminina</h2>
+      <p>Looks delicados e confortáveis para as pequenas.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card fade">
+        <img src="imagens/feminino.jpg" alt="Moda infantil feminina">
+        <div class="feature-overlay"></div>
+        <div class="feature-info">
+          <div class="label">Hanna Modas</div>
+          <h3>Moda Infantil Feminina</h3>
+          <p>Confira peças infantis femininas e consulte tamanhos e disponibilidade pelo WhatsApp.</p>
+          <a href="https://wa.me/5547997186720?text=Ol%C3%A1!%20Gostaria%20de%20ver%20as%20op%C3%A7%C3%B5es%20de%20moda%20infantil%20feminina." target="_blank">Consultar peças</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="featured" id="masculino" style="padding-top:20px">
+  <div class="container">
+    <div class="section-header fade">
+      <span>Coleções</span>
+      <h2>Moda Infantil Masculina</h2>
+      <p>Peças para os pequenos com conforto e estilo.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card fade">
+        <img src="imagens/masculino.jpg" alt="Moda infantil masculina">
+        <div class="feature-overlay"></div>
+        <div class="feature-info">
+          <div class="label">Hanna Modas</div>
+          <h3>Moda Infantil Masculina</h3>
+          <p>Confira peças infantis masculinas e consulte tamanhos e disponibilidade pelo WhatsApp.</p>
+          <a href="https://wa.me/5547997186720?text=Ol%C3%A1!%20Gostaria%20de%20ver%20as%20op%C3%A7%C3%B5es%20de%20moda%20infantil%20masculina." target="_blank">Consultar peças</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="catalog">
+  <div class="container">
+    <div class="section-header fade">
+      <span>Mais da Hanna Modas</span>
+      <h2>Outros produtos</h2>
+      <p>Além das coleções, a loja também oferece outras opções para crianças e famílias.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product fade"><div class="product-image"><span>Brinquedos</span></div><div class="product-info"><h3>Brinquedos</h3><p>Consulte as opções disponíveis na loja.</p></div></div>
+      <div class="product fade"><div class="product-image"><span>Bolsas</span></div><div class="product-info"><h3>Bolsas</h3><p>Modelos infantis e opções para diferentes ocasiões.</p></div></div>
+      <div class="product fade"><div class="product-image"><span>Acessórios</span></div><div class="product-info"><h3>Acessórios</h3><p>Detalhes para completar os looks.</p></div></div>
+      <div class="product fade"><div class="product-image"><span>Maternidade</span></div><div class="product-info"><h3>Saídas de maternidade</h3><p>Itens especiais para os primeiros momentos.</p></div></div>
+    </div>
+    <p class="catalog-note">Produtos, tamanhos e estoques podem variar. Fale conosco para consultar a disponibilidade.</p>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container about-grid">
+    <div class="about-image fade"><img src="imagens/fachada.jpg" alt="Hanna Kids - fachada da loja"></div>
+    <div class="about-text fade">
+      <span class="tag">Sobre a loja</span>
+      <h2>Tudo para vestir, presentear e encantar.</h2>
+      <p>A Hanna Modas é uma loja de moda infantil localizada em Morretes, Itapema - SC.</p>
+      <p>Trabalhamos com roupas para crianças de 0 a 16 anos, brinquedos, acessórios, bolsas, saídas de maternidade e outras opções.</p>
+      <p>Nosso objetivo é oferecer variedade, qualidade e um atendimento especial para cada cliente.</p>
+      <div class="features">
+        <div class="feature">Atendimento especial</div>
+        <div class="feature">Roupas de 0 a 16 anos</div>
+        <div class="feature">Diversidade de produtos</div>
+        <div class="feature">Loja física em Itapema</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="avaliacoes">
+  <div class="container">
+    <div class="section-header fade"><span>Clientes</span><h2>O que dizem sobre nós</h2></div>
+    <div class="rating fade"><div class="rating-number">5,0</div><div class="stars">★★★★★</div><p>9 avaliações</p></div>
+    <div class="review-grid">
+      <div class="review fade"><div class="review-stars">★★★★★</div><p>“Muito bom de comprar, um ambiente muito cheiroso e as coisas muito barato.”</p><strong>Maria Sônia dos Santos</strong></div>
+      <div class="review fade"><div class="review-stars">★★★★★</div><p>“Roupas de qualidade e excelente atendimento. Super recomendo.”</p><strong>Ediih Campos</strong></div>
+      <div class="review fade"><div class="review-stars">★★★★★</div><p>“Amo essa loja.”</p><strong>Jussara Terezinha</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="section-header fade">
+      <span>Fale conosco</span>
+      <h2>Visite a Hanna Modas</h2>
+      <p>Entre em contato ou venha conhecer nossa loja.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card fade">
+        <h3>Informações</h3>
+        <div class="contact-item"><strong>Endereço</strong>R. 438, 388 - Morretes<br>Itapema - SC, 88220-000</div>
+        <div class="contact-item"><strong>Telefone / WhatsApp</strong>(47) 99718-6720</div>
+        <div class="contact-item"><strong>Instagram</strong>@hannamodas.loja</div>
+      </div>
+      <div class="contact-card fade">
+        <h3>Atendimento</h3>
+        <div class="contact-item"><strong>Horário informado</strong>Aberto até 20:00</div>
+        <p style="margin-bottom:15px;color:var(--muted)">Para confirmar o horário de atendimento, entre em contato pelo WhatsApp.</p>
+        <a class="btn btn-primary contact-button" href="https://wa.me/5547997186720?text=Ol%C3%A1!%20Gostaria%20de%20saber%20o%20hor%C3%A1rio%20de%20atendimento." target="_blank">Perguntar pelo WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Hanna Modas</div><p>Moda infantil, acessórios, brinquedos e muito mais.</p></div>
+      <div><h3>Navegação</h3><div class="footer-links"><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#feminino">Feminino</a><a href="#masculino">Masculino</a><a href="#contato">Contato</a></div></div>
+      <div><h3>Contato</h3><div class="footer-links"><a href="https://wa.me/5547997186720" target="_blank">WhatsApp</a><a href="https://instagram.com/hannamodas.loja" target="_blank">Instagram</a><span>Itapema - SC</span></div></div>
+    </div>
+    <div class="copyright">© 2026 Hanna Modas. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5547997186720?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Hanna%20Modas." target="_blank" aria-label="Falar com Hanna Modas pelo WhatsApp">WA</a>
+
+<script>
+const menuButton=document.getElementById("menuButton");
+const menu=document.getElementById("menu");
+menuButton.addEventListener("click",()=>menu.classList.toggle("active"));
+document.querySelectorAll(".menu a").forEach(link=>link.addEventListener("click",()=>menu.classList.remove("active")));
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show")})
+},{threshold:.12});
+document.querySelectorAll(".fade").forEach(element=>observer.observe(element));
+</script>
+</body>
+</html>
